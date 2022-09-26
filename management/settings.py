@@ -29,7 +29,6 @@ DEBUG =True
 ALLOWED_HOSTS = ['imdproject.herokuapp.com','localhost','127.0.0.1']
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
-AUTH_USER_MODEL = 'inventory.User'
 
 
 
