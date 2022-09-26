@@ -24,10 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@67%tvd#h$yz*cx52*nj($@#(+g1$e2*(5s3!&dw(iqw0kl=+@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG =True
 
 ALLOWED_HOSTS = ['imdproject.herokuapp.com','localhost','127.0.0.1']
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
+AUTH_USER_MODEL = 'inventory.User'
 
 
 
@@ -142,9 +144,6 @@ TEMPLATES = [
         },
     },
 ]
-
-LOGIN_URL = '/login'
-LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'management.wsgi.application'
 # api_key='e914114c-2d0c-11ed-9c12-0200cd936042'
