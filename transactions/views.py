@@ -1,3 +1,7 @@
+from datetime import datetime
+
+from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -399,3 +403,32 @@ class SaleItemAPIView(APIView):
         return Response({
             'message': 'Sale Item Bill deleted successfully'
         })
+
+
+import csv
+
+def export_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=Expenses' + \
+        str(datetime.datetime.now())+'.csv'
+    writer = csv.writer(response)
+    writer.writerow(['Billno','Customer','Stock Sold','Quatity Sold','Total Sold Price','Date'])
+
+    expenses = SaleItem.objects.all()
+
+    for x in expenses:
+        writer.writerow([x.billno.billno,x.billno.name,x.stock,x.quantity,x.totalprice,x.billno.time])
+    return response
+
+
+
+def showresult(request):
+
+    if request.method=="POST":
+        fromdate=datetime.datetime.strptime(request.POST.get('fromdate'),'%Y-%m-%d')
+        todate=datetime.datetime.strptime(request.POST.get('todate'),'%Y-%m-%d')
+        bills=SaleBill.objects.filter(Q(time__gte=fromdate)&Q(time__lte=todate))
+        return Response({"bills":bills})
+    else:
+        bills=SaleBill.objects.all()
+        return Response({"bills":bills})

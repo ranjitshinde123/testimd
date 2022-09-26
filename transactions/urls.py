@@ -1,4 +1,4 @@
-
+from . import views
 from django.urls import path
 from .views import *
 urlpatterns = [
@@ -22,4 +22,7 @@ urlpatterns = [
     path('salebilldetails/<int:pk>/',SaleBillDetailsAPIView.as_view()),
     path('saleitem/',SaleItemAPIView.as_view()),
     path('saleitem/<int:pk>/',SaleItemAPIView.as_view()),
+
+    path('exportcsv/',views.export_csv()),
+    path('stockreport/',views.stockreport()),
 ]
