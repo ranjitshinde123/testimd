@@ -23,6 +23,7 @@ urlpatterns = [
     path('saleitem/',SaleItemAPIView.as_view()),
     path('saleitem/<int:pk>/',SaleItemAPIView.as_view()),
 
-    path('exportcsv/',views.export_csv()),
-    path('stockreport/',views.stockreport()),
+#     path('exportcsv/',views.export_csv()),
+#     path('stockreport/',views.stockreport()),
+
 ]
