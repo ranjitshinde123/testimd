@@ -143,6 +143,9 @@ TEMPLATES = [
     },
 ]
 
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/'
+
 WSGI_APPLICATION = 'management.wsgi.application'
 # api_key='e914114c-2d0c-11ed-9c12-0200cd936042'
 # # Database
