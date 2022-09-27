@@ -70,58 +70,58 @@ class SupplierAPIView(APIView):
 
 # PurchaseBill
 
-class PurchaseBillAPIView(APIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
-
-    # filter_fields = ['name', 'category', 'subcategory', 'type']
-
-    def get_object(self, pk):
-        try:
-            return PurchaseBill.objects.get(pk=pk)
-        except PurchaseBill.DoesNotExist:
-            raise
-    def get(self, request, pk=None, format=None):
-        if pk:
-            data = self.get_object(pk)
-            serializer = PurchaseBillSerializer(data)
-            return Response(serializer.data)
-        else:
-            data = PurchaseBill.objects.all()
-            serializer = PurchaseBillSerializer(data, many=True)
-            return Response(serializer.data)
-
-    def post(self, request, format=None):
-        data = request.data
-        serializer = PurchaseBillSerializer(data=data)
-
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        response = Response()
-        response.data = {
-            'message': 'Purchase Successfully',
-            'data': serializer.data
-            }
-        return response
-
-    def put(self, request, pk=None, format=None):
-        Purchase_to_update = PurchaseBill.objects.get(pk=pk)
-        serializer = PurchaseBillSerializer(instance=Purchase_to_update, data=request.data, partial=True)
-        serializer.is_valid()
-        serializer.save()
-        response = Response()
-        response.data = {
-            'message': 'PurchaseBill Updated Successfully',
-            'data': serializer.data
-            }
-        return response
-
-    def delete(self, request, pk, format=None):
-        Purchase_to_delete = PurchaseBill.objects.get(pk=pk)
-        Purchase_to_delete.delete()
-        return Response({
-            'message': 'PurchaseBill deleted successfully'
-        })
+# class PurchaseBillAPIView(APIView):
+#     authentication_classes = [JWTAuthentication]
+#     permission_classes = [IsAuthenticated]
+#
+#     # filter_fields = ['name', 'category', 'subcategory', 'type']
+#
+#     def get_object(self, pk):
+#         try:
+#             return PurchaseBill.objects.get(pk=pk)
+#         except PurchaseBill.DoesNotExist:
+#             raise
+#     def get(self, request, pk=None, format=None):
+#         if pk:
+#             data = self.get_object(pk)
+#             serializer = PurchaseBillSerializer(data)
+#             return Response(serializer.data)
+#         else:
+#             data = PurchaseBill.objects.all()
+#             serializer = PurchaseBillSerializer(data, many=True)
+#             return Response(serializer.data)
+#
+#     def post(self, request, format=None):
+#         data = request.data
+#         serializer = PurchaseBillSerializer(data=data)
+#
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         response = Response()
+#         response.data = {
+#             'message': 'Purchase Successfully',
+#             'data': serializer.data
+#             }
+#         return response
+#
+#     def put(self, request, pk=None, format=None):
+#         Purchase_to_update = PurchaseBill.objects.get(pk=pk)
+#         serializer = PurchaseBillSerializer(instance=Purchase_to_update, data=request.data, partial=True)
+#         serializer.is_valid()
+#         serializer.save()
+#         response = Response()
+#         response.data = {
+#             'message': 'PurchaseBill Updated Successfully',
+#             'data': serializer.data
+#             }
+#         return response
+#
+#     def delete(self, request, pk, format=None):
+#         Purchase_to_delete = PurchaseBill.objects.get(pk=pk)
+#         Purchase_to_delete.delete()
+#         return Response({
+#             'message': 'PurchaseBill deleted successfully'
+#         })
 
 # PurchaseItem
 class PurchaseItemAPIView(APIView):
@@ -177,60 +177,60 @@ class PurchaseItemAPIView(APIView):
             'message': 'PurchaseItem deleted successfully'
         })
 # PurchaseBill
-class PurchaseBillDetailsAPIView(APIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
-
-
-    def get_object(self, pk):
-        try:
-            return PurchaseBillDetails.objects.get(pk=pk)
-        except PurchaseBillDetails.DoesNotExist:
-            raise
-
-    def get(self, request, pk=None, format=None):
-        if pk:
-            data = self.get_object(pk)
-            serializer = PurchaseBillDetailsSerializer(data)
-            return Response(serializer.data)
-        else:
-            data = PurchaseBillDetails.objects.all()
-            serializer = PurchaseBillDetailsSerializer(data, many=True)
-            return Response(serializer.data)
-
-    def post(self, request, format=None):
-        data = request.data
-        serializer = PurchaseBillDetailsSerializer(data=data)
-
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        response = Response()
-        response.data = {
-            'message': 'Purchase details Add Successfully',
-            'data': serializer.data
-        }
-        return response
-
-    def put(self, request, pk=None, format=None):
-        PurchaseBillDetails_to_update = PurchaseBillDetails.objects.get(pk=pk)
-        serializer = PurchaseBillDetailsSerializer(instance=PurchaseBillDetails_to_update, data=request.data, partial=True)
-
-        serializer.is_valid()
-        serializer.save()
-        response = Response()
-        response.data = {
-            'message': 'Purchase details Updated Successfully',
-            'data': serializer.data
-        }
-        return response
-
-    def delete(self, request, pk, format=None):
-        PurchaseBillDetails_to_delete = PurchaseBillDetails.objects.get(pk=pk)
-        PurchaseBillDetails_to_delete.delete()
-        return Response({
-            'message': 'Purchase details deleted successfully'
-        })
-
+# class PurchaseBillDetailsAPIView(APIView):
+#     authentication_classes = [JWTAuthentication]
+#     permission_classes = [IsAuthenticated]
+#
+#
+#     def get_object(self, pk):
+#         try:
+#             return PurchaseBillDetails.objects.get(pk=pk)
+#         except PurchaseBillDetails.DoesNotExist:
+#             raise
+#
+#     def get(self, request, pk=None, format=None):
+#         if pk:
+#             data = self.get_object(pk)
+#             serializer = PurchaseBillDetailsSerializer(data)
+#             return Response(serializer.data)
+#         else:
+#             data = PurchaseBillDetails.objects.all()
+#             serializer = PurchaseBillDetailsSerializer(data, many=True)
+#             return Response(serializer.data)
+#
+#     def post(self, request, format=None):
+#         data = request.data
+#         serializer = PurchaseBillDetailsSerializer(data=data)
+#
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         response = Response()
+#         response.data = {
+#             'message': 'Purchase details Add Successfully',
+#             'data': serializer.data
+#         }
+#         return response
+#
+#     def put(self, request, pk=None, format=None):
+#         PurchaseBillDetails_to_update = PurchaseBillDetails.objects.get(pk=pk)
+#         serializer = PurchaseBillDetailsSerializer(instance=PurchaseBillDetails_to_update, data=request.data, partial=True)
+#
+#         serializer.is_valid()
+#         serializer.save()
+#         response = Response()
+#         response.data = {
+#             'message': 'Purchase details Updated Successfully',
+#             'data': serializer.data
+#         }
+#         return response
+#
+#     def delete(self, request, pk, format=None):
+#         PurchaseBillDetails_to_delete = PurchaseBillDetails.objects.get(pk=pk)
+#         PurchaseBillDetails_to_delete.delete()
+#         return Response({
+#             'message': 'Purchase details deleted successfully'
+#         })
+#
 
 
 # SaleBill
