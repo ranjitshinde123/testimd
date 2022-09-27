@@ -17,23 +17,24 @@ from django.contrib.auth.models import AbstractUser
 
 # stock
 class Stock(models.Model):
-    status_choices = [
-                 ('CON', 'CONSUMABLE'),
-                 ('NON', 'NON-CONSUMABLE'),
-             ]
+    # status_choices = [
+    #              ('CON', 'CONSUMABLE'),
+    #              ('NON', 'NON-CONSUMABLE'),
+    #          ]
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30, unique=True)
     category=models.CharField(max_length=30)
     subcategory=models.CharField(max_length=30)
-    type=models.CharField(max_length=50,choices=status_choices)
+    # type=models.CharField(max_length=50,choices=status_choices)
+    type=models.CharField(max_length=20)
     size=models.CharField(max_length=50)
     label_code=models.CharField(max_length=20,default="")
     quantity = models.IntegerField(default=1)
     description=models.TextField()
     # user=models.OneToOneField(User,on_delete=models.CASCADE)
     is_deleted = models.BooleanField(default=False)
-    created_at=models.DateField()
-    updated_at=models.DateField()
+    # created_at=models.DateField()
+    # updated_at=models.DateField()
 
 
     def __str__(self):
