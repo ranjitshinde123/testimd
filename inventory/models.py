@@ -33,8 +33,8 @@ class Stock(models.Model):
     description=models.TextField()
     # user=models.OneToOneField(User,on_delete=models.CASCADE)
     is_deleted = models.BooleanField(default=False)
-    # created_at=models.DateField()
-    # updated_at=models.DateField()
+    created_at=models.DateField(auto_created=True)
+    updated_at=models.DateField(auto_created=True)
 
 
     def __str__(self):
