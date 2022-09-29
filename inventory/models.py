@@ -33,7 +33,7 @@ class Stock(models.Model):
     description=models.TextField()
     # user=models.OneToOneField(User,on_delete=models.CASCADE)
     is_deleted = models.BooleanField(default=False)
-    created_at=models.DateTimeField(auto_created=True,)
+    created_at=models.DateTimeField(auto_created=True)
     updated_at=models.DateTimeField(auto_created=True)
 
 
